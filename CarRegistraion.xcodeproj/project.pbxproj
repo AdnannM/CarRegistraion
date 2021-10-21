@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		A675AFA02721786100E22888 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A675AF9F2721786100E22888 /* AppDelegate.swift */; };
 		A675AFA22721786100E22888 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A675AFA12721786100E22888 /* SceneDelegate.swift */; };
-		A675AFA42721786100E22888 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A675AFA32721786100E22888 /* ViewController.swift */; };
+		A675AFA42721786100E22888 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A675AFA32721786100E22888 /* RegistrationViewController.swift */; };
 		A675AFA72721786100E22888 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A675AFA52721786100E22888 /* Main.storyboard */; };
 		A675AFA92721786300E22888 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A675AFA82721786300E22888 /* Assets.xcassets */; };
 		A675AFAC2721786300E22888 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A675AFAA2721786300E22888 /* LaunchScreen.storyboard */; };
+		A675AFB42721790B00E22888 /* RegistrationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A675AFB32721790B00E22888 /* RegistrationTableViewCell.swift */; };
+		A675AFB627217F6100E22888 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A675AFB527217F6100E22888 /* PersonViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A675AF9C2721786100E22888 /* CarRegistraion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarRegistraion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A675AF9F2721786100E22888 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A675AFA12721786100E22888 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A675AFA32721786100E22888 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A675AFA32721786100E22888 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		A675AFA62721786100E22888 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A675AFA82721786300E22888 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A675AFAB2721786300E22888 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A675AFAD2721786300E22888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A675AFB32721790B00E22888 /* RegistrationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTableViewCell.swift; sourceTree = "<group>"; };
+		A675AFB527217F6100E22888 /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,57 @@
 		A675AF9E2721786100E22888 /* CarRegistraion */ = {
 			isa = PBXGroup;
 			children = (
-				A675AF9F2721786100E22888 /* AppDelegate.swift */,
-				A675AFA12721786100E22888 /* SceneDelegate.swift */,
-				A675AFA32721786100E22888 /* ViewController.swift */,
+				A675AFBB272185C900E22888 /* Service */,
+				A675AFBA272185C100E22888 /* Model */,
+				A675AFB9272185B000E22888 /* CustomCell */,
+				A675AFB82721859F00E22888 /* Controllers */,
+				A675AFB72721858500E22888 /* Suporting Files */,
 				A675AFA52721786100E22888 /* Main.storyboard */,
-				A675AFA82721786300E22888 /* Assets.xcassets */,
 				A675AFAA2721786300E22888 /* LaunchScreen.storyboard */,
 				A675AFAD2721786300E22888 /* Info.plist */,
 			);
 			path = CarRegistraion;
+			sourceTree = "<group>";
+		};
+		A675AFB72721858500E22888 /* Suporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A675AFA12721786100E22888 /* SceneDelegate.swift */,
+				A675AF9F2721786100E22888 /* AppDelegate.swift */,
+				A675AFA82721786300E22888 /* Assets.xcassets */,
+			);
+			path = "Suporting Files";
+			sourceTree = "<group>";
+		};
+		A675AFB82721859F00E22888 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A675AFB527217F6100E22888 /* PersonViewController.swift */,
+				A675AFA32721786100E22888 /* RegistrationViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A675AFB9272185B000E22888 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				A675AFB32721790B00E22888 /* RegistrationTableViewCell.swift */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		A675AFBA272185C100E22888 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A675AFBB272185C900E22888 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +184,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A675AFA42721786100E22888 /* ViewController.swift in Sources */,
+				A675AFB627217F6100E22888 /* PersonViewController.swift in Sources */,
+				A675AFB42721790B00E22888 /* RegistrationTableViewCell.swift in Sources */,
+				A675AFA42721786100E22888 /* RegistrationViewController.swift in Sources */,
 				A675AFA02721786100E22888 /* AppDelegate.swift in Sources */,
 				A675AFA22721786100E22888 /* SceneDelegate.swift in Sources */,
 			);
