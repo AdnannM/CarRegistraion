@@ -8,15 +8,28 @@
 import UIKit
 
 class RegistrationViewController: UITableViewController {
-
     
     // MARK: - viewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        parseJSON()
         setupTableView()
-        
-       
+    }
+    private func parseJSON() {
+        if let urlString = URL(string: "https://registration-springboot.herokuapp.com/api/registracija") {
+            URLSession.shared.dataTask(with: urlString) { data, response, errro in
+                if let data = data {
+                    let jsonDecoder = JSONDecoder()
+                    do {
+                        let jsonResult = try jsonDecoder.decode(Welcome.self, from: data)
+                        print(jsonResult)
+                    }
+                    catch {
+                        print(error)
+                    }
+                }
+            }.resume()
+        }
     }
 }
 
