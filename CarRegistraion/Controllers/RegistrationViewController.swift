@@ -9,26 +9,53 @@ import UIKit
 
 class RegistrationViewController: UITableViewController {
     
+    var welcomeElement = [Welcome]()
+
     // MARK: - viewLifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        parseJSON()
+
+        parseJson()
+        self.tableView.allowsMultipleSelection = true
         setupTableView()
+        
     }
-    private func parseJSON() {
-        if let urlString = URL(string: "https://registration-springboot.herokuapp.com/api/registracija") {
-            URLSession.shared.dataTask(with: urlString) { data, response, errro in
-                if let data = data {
-                    let jsonDecoder = JSONDecoder()
-                    do {
-                        let jsonResult = try jsonDecoder.decode(Welcome.self, from: data)
-                        print(jsonResult)
-                    }
-                    catch {
+}
+
+// MARK: - Parse and Load JSON
+extension RegistrationViewController {
+    fileprivate func parseJson() {
+        if let url = URL(string: "https://registration-springboot.herokuapp.com/api/registracija") {
+            let session = URLSession.shared
+            
+            let task = session.dataTask(with: url) { data, response, error in
+                guard let data = data else {
+                    if let error = error {
                         print(error)
                     }
+                    
+                    return
                 }
-            }.resume()
+                do {
+                    
+                    let jsonDecoder = JSONDecoder()
+                    let jsonResult = try jsonDecoder.decode(Welcome.self, from: data)
+                    print(jsonResult)
+                    
+                    DispatchQueue.main.async {
+                        self.welcomeElement.append(jsonResult)
+                        print(self.welcomeElement)
+                        self.tableView.reloadData()
+                    }
+                    
+                }
+                catch {
+                    print(error.localizedDescription)
+                }
+            }
+            
+            task.resume()
         }
     }
 }
@@ -38,30 +65,35 @@ extension RegistrationViewController {
     
     private func setupTableView() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        title = "Car Registraiom"
+        title = "Car Registration"
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        
+        return welcomeElement.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RegistrationTableViewCell
         
-        // Animation
-          UIView.animate(withDuration: 0.6) {
-              cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-              cell.transform = .identity
-          }
+       
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RegistrationTableViewCell
+    
+        if tableView == self.tableView {
+            let elem = welcomeElement[indexPath.item]
+            cell.nameLabel.text = elem[indexPath.item].registrovanoNaOsobuDto.ime
+            cell.lastNameLabel.text = String(elem[indexPath.item].registrovanoNaOsobuDto.jmbg)
+        }
         
         return cell
+
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 150
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

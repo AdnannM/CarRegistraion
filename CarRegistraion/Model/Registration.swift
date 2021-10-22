@@ -7,12 +7,10 @@
 
 import Foundation
 
+
+import Foundation
+
 // MARK: - WelcomeElement
-
-struct Registration: Codable {
-    var welcome = [WelcomeElement]()
-}
-
 struct WelcomeElement: Codable {
     let id: Int
     let registracijskaOznaka: String
@@ -20,6 +18,7 @@ struct WelcomeElement: Codable {
     let modelVozilaDto: ModelVozilaDto
     let registracija: Registracija
 }
+
 
 // MARK: - ModelVozilaDto
 struct ModelVozilaDto: Codable {
@@ -32,10 +31,8 @@ struct ModelVozilaDto: Codable {
 
 // MARK: - KarakteristikeVozilaDto
 struct KarakteristikeVozilaDto: Codable {
-    let id: Int
-    let brojSasije: Int
-    let boja: String
-    let tipVozila: String
+    let id, brojSasije: Int
+    let boja, tipVozila: String
     let snagaMotora: Int
 }
 
@@ -49,13 +46,15 @@ struct Registracija: Codable {
 // MARK: - RegistrovanoNaOsobuDto
 struct RegistrovanoNaOsobuDto: Codable {
     let id: Int
-    let ime: String
-    let prezime: String
+    let ime, prezime: String
     let jmbg: Int
-    let datumRodjenja: String
-    let grad: String
+    let datumRodjenja, grad: String
 }
 
 typealias Welcome = [WelcomeElement]
 
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
+//
+//   let welcome = try? newJSONDecoder().decode(Welcome.self, from: jsonData)
 

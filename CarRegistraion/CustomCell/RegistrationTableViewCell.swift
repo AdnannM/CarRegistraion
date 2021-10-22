@@ -8,12 +8,17 @@
 import UIKit
 
 class RegistrationTableViewCell: UITableViewCell {
-
+  
     @IBOutlet weak var cellBackgroundView: UIView! {
         didSet {
             cellBackgroundView.layer.cornerRadius = 20
         }
     }
+    
+    @IBOutlet weak var lastNameLabel: UILabel!
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
